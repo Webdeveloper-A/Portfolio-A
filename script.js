@@ -1,115 +1,106 @@
-const header = document.getElementById('header');
-const navToggle = document.getElementById('navToggle');
-const navList = document.getElementById('navList');
-const navLinks = [...document.querySelectorAll('.nav-list a')];
-const sections = [...document.querySelectorAll('main section[id]')];
-const yearEl = document.getElementById('year');
-const revealEls = document.querySelectorAll('.reveal');
-
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
-const updateHeader = () => {
-  header.classList.toggle('scrolled', window.scrollY > 18);
-};
-
-updateHeader();
-window.addEventListener('scroll', updateHeader);
-
-if (navToggle && navList) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = navList.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
+/* custom cursor */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+});
+(function animRing() {
+  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.service-card,.project-card').forEach(el => {
+  el.addEventListener('mouseenter',()=>{
+    cursor.style.transform='translate(-50%,-50%) scale(2)';
+    ring.style.width='60px'; ring.style.height='60px';
   });
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      navList.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
-
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', (event) => {
-    const targetId = anchor.getAttribute('href');
-    if (!targetId || targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if (!target) return;
-    event.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  el.addEventListener('mouseleave',()=>{
+    cursor.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.width='36px'; ring.style.height='36px';
   });
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.14 }
-);
+/* header scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+});
 
-revealEls.forEach((element) => revealObserver.observe(element));
+/* hamburger */
+const ham = document.getElementById('hamburger');
+const navList = document.getElementById('nav-list');
+ham.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
 
-const activateNav = () => {
-  let currentId = '';
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top <= 140 && rect.bottom >= 140) {
-      currentId = section.id;
+/* smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* reveal on scroll */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      /* animate skill bars */
+      e.target.querySelectorAll && e.target.querySelectorAll('.skill-bar-fill').forEach(b => b.classList.add('animate'));
     }
   });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  navLinks.forEach((link) => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+/* also trigger skill bars when about section is visible */
+const aboutObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+        b.style.transform = `scaleX(${b.style.getPropertyValue('--w') || 1})`;
+      });
+    }
   });
-};
+}, { threshold: 0.3 });
+const aboutSection = document.querySelector('.about');
+if (aboutSection) aboutObserver.observe(aboutSection);
 
-activateNav();
-window.addEventListener('scroll', activateNav);
+/* skill bars */
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(b => b.classList.add('animate'));
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.skills-section').forEach(el => skillObserver.observe(el));
 
-(function initEmailJs() {
-  if (window.emailjs) {
-    window.emailjs.init('i3EQ1T80MaHezU6yr');
-  }
-})();
+/* EmailJS (requires email.min.js loaded before this script) */
+(function() { emailjs.init("i3EQ1T80MaHezU6yr"); })();
 
 const form = document.getElementById('contactForm');
-const statusBox = document.getElementById('form-status');
-const sendBtn = document.getElementById('sendBtn');
+const status = document.getElementById('form-status');
+const btn = document.getElementById('sendBtn');
 
-if (form && statusBox && sendBtn) {
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.className = '';
 
-    if (!window.emailjs) {
-      statusBox.textContent = 'Email service is not available right now. Contact me through Telegram or Instagram.';
-      statusBox.className = 'form-status error';
-      return;
-    }
-
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Sending...';
-    statusBox.className = 'form-status';
-    statusBox.textContent = '';
-
-    try {
-      await window.emailjs.sendForm('service_tp5tqzf', 'template_71uy5yn', form);
+  emailjs.sendForm('service_tp5tqzf', 'template_71uy5yn', this)
+    .then(() => {
+      status.textContent = '✓ Message sent successfully!';
+      status.className = 'success';
       form.reset();
-      statusBox.textContent = 'Message sent successfully. I will get back to you soon.';
-      statusBox.className = 'form-status success';
-    } catch (error) {
-      statusBox.textContent = 'Message failed to send. Use Telegram or try again later.';
-      statusBox.className = 'form-status error';
-      console.error(error);
-    } finally {
-      sendBtn.disabled = false;
-      sendBtn.textContent = 'Send Message';
-    }
-  });
-}
+    }, () => {
+      status.textContent = '✕ Something went wrong. Please try again.';
+      status.className = 'error';
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = 'Send Message <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
+    });
+});
