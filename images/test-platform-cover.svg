@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+<rect width="1600" height="900" rx="40" fill="#0A1322"/>
+<circle cx="1300" cy="180" r="220" fill="#14345E" fill-opacity="0.55"/>
+<circle cx="260" cy="780" r="200" fill="#123E32" fill-opacity="0.55"/>
+<rect x="90" y="90" width="1420" height="720" rx="32" fill="#0F1B30" stroke="#22375A"/>
+<text x="130" y="210" fill="#76F7BF" font-family="Arial, sans-serif" font-size="34" font-weight="700">EDUCATION / EXAMS</text>
+<text x="130" y="300" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="82" font-weight="700">Online Test Platform</text>
+<text x="130" y="375" fill="#9CADC7" font-family="Arial, sans-serif" font-size="32">Timed tests, scoring, leaderboard, and structured assessment workflows.</text>
+<rect x="130" y="470" width="260" height="64" rx="18" fill="#76F7BF"/><text x="182" y="512" fill="#07111D" font-family="Arial, sans-serif" font-size="28" font-weight="700">Live Platform</text>
+<rect x="130" y="585" width="260" height="118" rx="24" fill="#121F36" stroke="#27446C"/><text x="160" y="632" fill="#5FA8FF" font-family="Arial, sans-serif" font-size="22" font-weight="700">FEATURES</text><text x="160" y="671" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="23">• Timed tests</text><text x="160" y="704" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="23">• Results tracking</text>
+<rect x="1020" y="220" width="330" height="380" rx="28" fill="#111D31" stroke="#284667"/><text x="1060" y="295" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Dashboard</text><rect x="1060" y="340" width="250" height="18" rx="9" fill="#1F3657"/><rect x="1060" y="386" width="220" height="18" rx="9" fill="#1C2E4A"/><rect x="1060" y="432" width="240" height="18" rx="9" fill="#1F3657"/><rect x="1060" y="496" width="110" height="76" rx="16" fill="#182A44"/><rect x="1190" y="496" width="120" height="76" rx="16" fill="#182A44"/>
+<rect x="1060" y="620" width="150" height="54" rx="14" fill="#5FA8FF"/><text x="1096" y="655" fill="#07111D" font-family="Arial, sans-serif" font-size="22" font-weight="700">View</text>
+</svg>

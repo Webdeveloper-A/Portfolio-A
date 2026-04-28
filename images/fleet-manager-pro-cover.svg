@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+<defs>
+  <linearGradient id="bg" x1="150" y1="70" x2="1470" y2="810" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#0B1322"/>
+    <stop offset="1" stop-color="#111F36"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#76F7BF"/>
+    <stop offset="1" stop-color="#5FA8FF"/>
+  </linearGradient>
+</defs>
+<rect width="1600" height="900" rx="40" fill="url(#bg)"/>
+<circle cx="1350" cy="170" r="240" fill="#17385D" fill-opacity="0.38"/>
+<circle cx="230" cy="780" r="210" fill="#113D34" fill-opacity="0.42"/>
+<rect x="74" y="76" width="1452" height="748" rx="34" fill="#0F1B30" stroke="#233B61"/>
+<text x="122" y="184" fill="#76F7BF" font-family="Arial, sans-serif" font-size="34" font-weight="700">OPERATIONS / LOGISTICS</text>
+<text x="122" y="278" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="88" font-weight="700">Fleet Manager Pro</text>
+<text x="122" y="350" fill="#9CADC7" font-family="Arial, sans-serif" font-size="31">Fleet management platform for company operations, vehicle workflows, documents, and admin control.</text>
+<rect x="122" y="418" width="190" height="54" rx="14" fill="#121F36" stroke="#2D4B74"/>
+<text x="148" y="452" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">Node.js</text>
+<rect x="330" y="418" width="210" height="54" rx="14" fill="#121F36" stroke="#2D4B74"/>
+<text x="356" y="452" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">PostgreSQL</text>
+<rect x="560" y="418" width="220" height="54" rx="14" fill="#121F36" stroke="#2D4B74"/>
+<text x="586" y="452" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">Docs UI</text>
+<rect x="800" y="418" width="190" height="54" rx="14" fill="#121F36" stroke="#2D4B74"/>
+<text x="828" y="452" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">Monorepo</text>
+<rect x="122" y="530" width="320" height="188" rx="26" fill="#121F36" stroke="#27456E"/>
+<text x="154" y="582" fill="#5FA8FF" font-family="Arial, sans-serif" font-size="22" font-weight="700">CORE CAPABILITIES</text>
+<text x="154" y="626" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">• Company management</text>
+<text x="154" y="666" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">• Vehicle workflows</text>
+<text x="154" y="706" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="24">• Admin-side control</text>
+<rect x="1000" y="200" width="400" height="500" rx="30" fill="#101C30" stroke="#2A4A76"/>
+<text x="1050" y="264" fill="#ECF2FF" font-family="Arial, sans-serif" font-size="36" font-weight="700">System Preview</text>
+<rect x="1050" y="314" width="300" height="18" rx="9" fill="#1E3557"/>
+<rect x="1050" y="356" width="250" height="18" rx="9" fill="#1A2D49"/>
+<rect x="1050" y="398" width="280" height="18" rx="9" fill="#1E3557"/>
+<rect x="1050" y="454" width="130" height="110" rx="20" fill="#182A44"/>
+<rect x="1200" y="454" width="150" height="110" rx="20" fill="#182A44"/>
+<rect x="1050" y="588" width="300" height="50" rx="16" fill="url(#accent)"/>
+<text x="1130" y="621" fill="#07111D" font-family="Arial, sans-serif" font-size="24" font-weight="700">Live Docs Site</text>
+</svg>
